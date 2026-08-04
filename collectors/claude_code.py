@@ -14,10 +14,6 @@ def collect_claude_code_sessions(projects_dir: str, recent_hours: int = 0) -> li
     results = []
 
     for jsonl_file in projects_path.glob("**/*.jsonl"):
-        # 只处理直接会话文件（跳过子目录里的元数据文件）
-        if jsonl_file.parent.name != projects_path.name and jsonl_file.parent.parent != projects_path:
-            pass  # 继续处理，Claude Code 的 sessions 就在项目文件夹下
-
         try:
             lines = jsonl_file.read_text(encoding="utf-8").strip().splitlines()
         except Exception:

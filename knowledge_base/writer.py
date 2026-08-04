@@ -37,7 +37,7 @@ def _make_filename(text: str) -> str:
         if "知识类型" in line or "知识标题" in line:
             continue
         # 取第一个有意义的行作为标题
-        safe = "".join(c for c in line if c.isalnum() or c in " _-（）()：:").strip()
+        safe = "".join(c for c in line if c.isalnum() or c in " _-（）()").strip()
         if safe:
             return safe[:60]
     import time
