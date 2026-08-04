@@ -1,0 +1,27 @@
+# 数据源路径
+sources:
+  claude_code: "C:/Users/wrfuy/.claude/projects"
+  obsidian: "D:/ObsidianVault"
+
+# Claude API 配置
+# 使用本地 cc-switch 代理，api_key 填 'proxy_managed'（代理会用自己的 key）
+api:
+  key_env: "ANTHROPIC_AUTH_TOKEN"
+  base_url_env: "ANTHROPIC_BASE_URL"
+  model: "claude-sonnet-4-6"
+
+# 知识库输出路径
+knowledge_base:
+  path: "./knowledge-base"
+
+# 采集配置
+collector:
+  # 只处理最近 N 小时内修改过的文件（0 = 处理所有文件）
+  recent_hours: 0
+
+# 知识提取配置
+extractor:
+  # 每次最多发送给 AI 处理多少条对话/笔记
+  batch_size: 10
+  # 温度
+  temperature: 0.3
