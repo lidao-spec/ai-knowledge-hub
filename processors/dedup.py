@@ -1,8 +1,10 @@
-import os
-import sys            # 加这行
+import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent.parent)) 
+sys.path.insert(0, str(Path(__file__).parent.parent))
+import json
+import re
 import yaml
+
 from processors.extractor import get_client
 
 
@@ -80,8 +82,6 @@ relation 取值：
         messages=[{"role": "user", "content": prompt}]
     )
 
-    import json
-    import re
     raw = message.content[0].text.strip()
     # 去除 markdown 代码块标记
     if raw.startswith("```json"):
@@ -140,7 +140,7 @@ def _merge_duplicates(client, model: str, file_a: str, file_b: str) -> str:
 
     message = client.messages.create(
         model=model,
-        max_tokens=8192,
+        max_tokens=2048,
         temperature=0.3,
         messages=[{"role": "user", "content": prompt}]
     )
@@ -172,7 +172,7 @@ def _resolve_conflict(client, model: str, file_a: str, file_b: str, reason: str)
 
     message = client.messages.create(
         model=model,
-        max_tokens=8192,
+        max_tokens=2048,
         temperature=0.3,
         messages=[{"role": "user", "content": prompt}]
     )
